@@ -71,7 +71,7 @@ public class RainfallStatsTest {
 		stats.addMeasurement(3.0);
 		stats.addMeasurement(5.0);
 		stats.addMeasurement(4.0);
-		assertEquals(4.0, stats.getMean(), 0);
+		Assert.assertEquals(4.0, stats.getMean(), 0);
 	}
 	
 	/*

@@ -18,4 +18,9 @@ class RainfallStats {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+	public void addMeasurement(double d) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'addMeasurement'");
+	}
+
 }
