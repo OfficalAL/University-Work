@@ -64,7 +64,7 @@ const STANCE_DEFENSE_MULTIPLIERS = {
 var attack_timer: float = 0.0
 
 # References (to be set in scene)
-@onready var visual_mesh: MeshInstance3D = $Visual/PlayerMesh
+@onready var human_model: Node3D = $Visual/HumanModel
 @onready var stance_indicator: MeshInstance3D = $Camera3D/StanceIndicator
 @onready var left_arm_controller = $Visual/LeftArm/LeftArmController if has_node("Visual/LeftArm/LeftArmController") else null
 @onready var right_arm_controller = $Visual/RightArm/RightArmController if has_node("Visual/RightArm/RightArmController") else null
