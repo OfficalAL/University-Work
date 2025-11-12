@@ -1,0 +1,8 @@
+add John 12345
+show john
+list
+update john 67890
+show john
+remove john
+list
+exit
