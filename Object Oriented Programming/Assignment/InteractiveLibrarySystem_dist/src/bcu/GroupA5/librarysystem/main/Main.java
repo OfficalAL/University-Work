@@ -1,8 +1,8 @@
-package bcu.cmp5332.librarysystem.main;
+package bcu.GroupA5.librarysystem.main;
 
-import bcu.cmp5332.librarysystem.data.LibraryData;
-import bcu.cmp5332.librarysystem.commands.Command;
-import bcu.cmp5332.librarysystem.model.Library;
+import bcu.GroupA5.librarysystem.data.LibraryData;
+import bcu.GroupA5.librarysystem.commands.Command;
+import bcu.GroupA5.librarysystem.model.Library;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -35,4 +35,3 @@ public class Main {
         System.exit(0);
     }
 }
- 

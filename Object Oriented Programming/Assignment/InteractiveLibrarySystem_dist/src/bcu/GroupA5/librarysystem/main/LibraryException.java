@@ -1,4 +1,4 @@
-package bcu.cmp5332.librarysystem.main;
+package bcu.GroupA5.librarysystem.main;
 
 /**
  * LibraryException extends {@link Exception} class and is a custom exception
@@ -11,4 +11,3 @@ public class LibraryException extends Exception {
         super(message);
     }
 }
- 

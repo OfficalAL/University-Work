@@ -1,6 +1,6 @@
-package bcu.cmp5332.librarysystem.commands;
+package bcu.GroupA5.librarysystem.commands;
 
-import bcu.cmp5332.librarysystem.model.Library;
+import bcu.GroupA5.librarysystem.model.Library;
 
 import java.time.LocalDate;
 
@@ -11,4 +11,3 @@ public class Help implements Command {
         System.out.println(Command.HELP_MESSAGE);
     }
 }
- 

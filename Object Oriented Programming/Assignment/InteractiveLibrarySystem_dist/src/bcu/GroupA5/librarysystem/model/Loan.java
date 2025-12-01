@@ -1,4 +1,4 @@
-package bcu.cmp5332.librarysystem.model;
+package bcu.GroupA5.librarysystem.model;
 
 import java.time.LocalDate;
 
@@ -15,4 +15,3 @@ public class Loan {
     
     // TODO: implementation of Getter and Setter methods
 }
- 

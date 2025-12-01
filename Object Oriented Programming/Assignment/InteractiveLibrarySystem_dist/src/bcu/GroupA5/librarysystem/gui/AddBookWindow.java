@@ -1,8 +1,8 @@
-package bcu.cmp5332.librarysystem.gui;
+package bcu.GroupA5.librarysystem.gui;
 
-import bcu.cmp5332.librarysystem.commands.AddBook;
-import bcu.cmp5332.librarysystem.commands.Command;
-import bcu.cmp5332.librarysystem.main.LibraryException;
+import bcu.GroupA5.librarysystem.commands.AddBook;
+import bcu.GroupA5.librarysystem.commands.Command;
+import bcu.GroupA5.librarysystem.main.LibraryException;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;

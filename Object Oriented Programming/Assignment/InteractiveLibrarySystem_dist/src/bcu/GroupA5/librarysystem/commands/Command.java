@@ -1,7 +1,7 @@
-package bcu.cmp5332.librarysystem.commands;
+package bcu.GroupA5.librarysystem.commands;
 
-import bcu.cmp5332.librarysystem.main.LibraryException;
-import bcu.cmp5332.librarysystem.model.Library;
+import bcu.GroupA5.librarysystem.main.LibraryException;
+import bcu.GroupA5.librarysystem.model.Library;
 
 import java.time.LocalDate;
 
@@ -25,4 +25,3 @@ public interface Command {
     public void execute(Library library, LocalDate currentDate) throws LibraryException;
     
 }
- 

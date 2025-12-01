@@ -1,7 +1,7 @@
-package bcu.cmp5332.librarysystem.gui;
+package bcu.GroupA5.librarysystem.gui;
 
-import bcu.cmp5332.librarysystem.model.Book;
-import bcu.cmp5332.librarysystem.model.Library;
+import bcu.GroupA5.librarysystem.model.Book;
+import bcu.GroupA5.librarysystem.model.Library;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;

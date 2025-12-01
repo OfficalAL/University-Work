@@ -1,6 +1,6 @@
-package bcu.cmp5332.librarysystem.model;
+package bcu.GroupA5.librarysystem.model;
 
-import bcu.cmp5332.librarysystem.main.LibraryException;
+import bcu.GroupA5.librarysystem.main.LibraryException;
 import java.time.LocalDate;
 
 public class Book {

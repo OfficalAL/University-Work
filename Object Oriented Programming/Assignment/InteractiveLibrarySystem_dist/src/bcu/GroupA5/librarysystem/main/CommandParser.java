@@ -1,10 +1,10 @@
-package bcu.cmp5332.librarysystem.main;
+package bcu.GroupA5.librarysystem.main;
 
-import bcu.cmp5332.librarysystem.commands.LoadGUI;
-import bcu.cmp5332.librarysystem.commands.ListBooks;
-import bcu.cmp5332.librarysystem.commands.AddBook;
-import bcu.cmp5332.librarysystem.commands.Command;
-import bcu.cmp5332.librarysystem.commands.Help;
+import bcu.GroupA5.librarysystem.commands.LoadGUI;
+import bcu.GroupA5.librarysystem.commands.ListBooks;
+import bcu.GroupA5.librarysystem.commands.AddBook;
+import bcu.GroupA5.librarysystem.commands.Command;
+import bcu.GroupA5.librarysystem.commands.Help;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
