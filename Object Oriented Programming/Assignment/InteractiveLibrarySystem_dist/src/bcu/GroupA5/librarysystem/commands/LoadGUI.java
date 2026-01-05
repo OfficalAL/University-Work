@@ -14,7 +14,8 @@ public class LoadGUI implements Command {
 
     @Override
     public void execute(Library library, LocalDate currentDate) throws LibraryException {
-        new MainWindow(library);
+        MainWindow mainWindow = new MainWindow(library);
+        mainWindow.setVisible(true);
     }
     
 }

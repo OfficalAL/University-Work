@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class MainWindow extends JFrame implements ActionListener {
     /**
@@ -42,7 +43,7 @@ public class MainWindow extends JFrame implements ActionListener {
     private JMenuItem memAdd;
     private JMenuItem memDel;
 
-    private Library library;
+    private final Library library;
 
     public MainWindow(Library library) {
 
@@ -61,7 +62,7 @@ public class MainWindow extends JFrame implements ActionListener {
 
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception ex) {
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException ex) {
 
         }
 
@@ -142,7 +143,8 @@ public class MainWindow extends JFrame implements ActionListener {
         } else if (ae.getSource() == booksView) {
             displayBooks();
         } else if (ae.getSource() == booksAdd) {
-            new AddBookWindow(this);
+            // The AddBookWindow constructor displays the window, so we do not need to keep a reference.
+            AddBookWindow addBookWindow = new AddBookWindow(this);
         } else if (ae.getSource() == booksDel) {
             String input = JOptionPane.showInputDialog(this, "Enter Book ID to delete:");
             if (input != null) {
@@ -158,15 +160,18 @@ public class MainWindow extends JFrame implements ActionListener {
                 }
             }
         } else if (ae.getSource() == booksIssue) {
-            new BorrowBookWindow(this);
+            BorrowBookWindow borrowBookWindow = new BorrowBookWindow(this);
         } else if (ae.getSource() == booksReturn) {
-            new ReturnBookWindow(this);
+            // The ReturnBookWindow constructor displays the window, so we do not need to keep a reference.
+            ReturnBookWindow returnBookWindow = new ReturnBookWindow(this);
         } else if (ae.getSource().toString().contains("Renew")) {
-            new RenewBookWindow(this);
+            // The RenewBookWindow constructor displays the window, so we do not need to keep a reference.
+            RenewBookWindow renewBookWindow = new RenewBookWindow(this);
         } else if (ae.getSource() == memView) {
             displayPatrons();
         } else if (ae.getSource() == memAdd) {
-            new AddPatronWindow(this);
+            // The AddPatronWindow constructor displays the window, so we do not need to keep a reference.
+            AddPatronWindow addPatronWindow = new AddPatronWindow(this);
         } else if (ae.getSource() == memDel) {
             String input = JOptionPane.showInputDialog(this, "Enter Patron ID to delete:");
             if (input != null) {
@@ -175,9 +180,7 @@ public class MainWindow extends JFrame implements ActionListener {
                     Command delPatron = new DeletePatron(patronId);
                     delPatron.execute(library, null);
                     displayPatrons();
-                } catch (LibraryException ex) {
-                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                } catch (Exception ex) {
+                } catch (LibraryException | NumberFormatException ex) {
                     JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
@@ -198,6 +201,7 @@ public class MainWindow extends JFrame implements ActionListener {
         }
         JTable table = new JTable(data, columns);
         table.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 if (evt.getClickCount() == 2) {
                     int row = table.getSelectedRow();
@@ -211,7 +215,8 @@ public class MainWindow extends JFrame implements ActionListener {
                             }
                         }
                         if (book != null) {
-                            new ShowBookWindow(book);
+                            ShowBookWindow showBookWindow = new ShowBookWindow(book);
+                            showBookWindow.setVisible(true);
                         }
                     }
                 }
@@ -252,7 +257,8 @@ public class MainWindow extends JFrame implements ActionListener {
                             }
                         }
                         if (book != null) {
-                            new ShowBookWindow(book);
+                            ShowBookWindow showBookWindow = new ShowBookWindow(book);
+                            showBookWindow.setVisible(true);
                         }
                     }
                 }

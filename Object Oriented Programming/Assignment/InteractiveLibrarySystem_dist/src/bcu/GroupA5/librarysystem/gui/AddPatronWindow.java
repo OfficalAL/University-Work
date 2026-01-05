@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class AddPatronWindow extends JFrame implements ActionListener {
     /**
@@ -23,13 +24,13 @@ public class AddPatronWindow extends JFrame implements ActionListener {
      * but delegates data storage and ID generation to the command.
      */
 
-    private MainWindow mw;
-    private JTextField nameText = new JTextField();
-    private JTextField phoneText = new JTextField();
-    private JTextField emailText = new JTextField();
+    private final MainWindow mw;
+    private final JTextField nameText = new JTextField();
+    private final JTextField phoneText = new JTextField();
+    private final JTextField emailText = new JTextField();
 
-    private JButton addBtn = new JButton("Add");
-    private JButton cancelBtn = new JButton("Cancel");
+    private final JButton addBtn = new JButton("Add");
+    private final JButton cancelBtn = new JButton("Cancel");
 
     public AddPatronWindow(MainWindow mw) {
         this.mw = mw;
@@ -39,7 +40,7 @@ public class AddPatronWindow extends JFrame implements ActionListener {
     private void initialize() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception ex) {}
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException ex) {}
 
         setTitle("Add a New Patron");
         setSize(300, 200);

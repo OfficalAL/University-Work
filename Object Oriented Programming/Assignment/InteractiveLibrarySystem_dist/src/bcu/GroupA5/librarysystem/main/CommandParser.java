@@ -38,12 +38,15 @@ public class CommandParser {
             } else if (cmd.equals("loadgui")) {
                 return new LoadGUI();
             } else if (parts.length == 1) {
-                if (line.equals("listbooks")) {
-                    return new ListBooks();
-                } else if (line.equals("listpatrons")) {
-                     
-                } else if (line.equals("help")) {
-                    return new Help();
+                switch (line) {
+                    case "listbooks":
+                        return new ListBooks();
+                    case "listpatrons":
+                        break;
+                    case "help":
+                        return new Help();
+                    default:
+                        break;
                 }
             } else if (parts.length == 2) {
                 int id = Integer.parseInt(parts[1]);
@@ -54,8 +57,6 @@ public class CommandParser {
                     
                 }
             } else if (parts.length == 3) {
-                int patronID = Integer.parseInt(parts[1]);
-                int bookID = Integer.parseInt(parts[2]);
 
                 switch (cmd) {
                     case "borrow":

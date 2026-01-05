@@ -2,6 +2,7 @@ package bcu.GroupA5.librarysystem.gui;
 
 import bcu.GroupA5.librarysystem.commands.AddBook;
 import bcu.GroupA5.librarysystem.commands.Command;
+import bcu.GroupA5.librarysystem.main.LibraryException;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class AddBookWindow extends JFrame implements ActionListener {
     /**
@@ -44,7 +46,7 @@ public class AddBookWindow extends JFrame implements ActionListener {
     private void initialize() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception ex) {
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException ex) {
             // Log or handle exception if needed
         }
 
@@ -110,7 +112,7 @@ public class AddBookWindow extends JFrame implements ActionListener {
             mw.displayBooks();
             // hide (close) the AddBookWindow
             this.setVisible(false);
-        } catch (Exception ex) {
+        } catch (LibraryException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }

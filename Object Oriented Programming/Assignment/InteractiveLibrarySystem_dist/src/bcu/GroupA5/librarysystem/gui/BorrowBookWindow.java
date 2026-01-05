@@ -2,6 +2,7 @@ package bcu.GroupA5.librarysystem.gui;
 
 import bcu.GroupA5.librarysystem.commands.BorrowBook;
 import bcu.GroupA5.librarysystem.commands.Command;
+import bcu.GroupA5.librarysystem.main.LibraryException;
 import bcu.GroupA5.librarysystem.model.Book;
 import bcu.GroupA5.librarysystem.model.Library;
 import bcu.GroupA5.librarysystem.model.Patron;
@@ -17,15 +18,18 @@ public class BorrowBookWindow extends JFrame implements ActionListener {
      * a borrow. The window delegates to `BorrowBook` which enforces
      * business rules (limit, loan creation) and performs persistence.
      */
-    private MainWindow mw;
-    private JComboBox<Book> bookCombo;
-    private JComboBox<Patron> patronCombo;
-    private JTextField dueDateText = new JTextField();
-    private JButton borrowBtn = new JButton("Borrow");
-    private JButton cancelBtn = new JButton("Cancel");
+    private final MainWindow mw;
+    private final JComboBox<Book> bookCombo;
+    private final JComboBox<Patron> patronCombo;
+    private final JTextField dueDateText = new JTextField();
+    private final JButton borrowBtn = new JButton("Borrow");
+    private final JButton cancelBtn = new JButton("Cancel");
 
     public BorrowBookWindow(MainWindow mw) {
         this.mw = mw;
+        Library library = mw.getLibrary();
+        bookCombo = new JComboBox<>(library.getBooks().stream().filter(b -> !b.isOnLoan()).toArray(Book[]::new));
+        patronCombo = new JComboBox<>(library.getPatrons().toArray(new Patron[0]));
         initialize();
     }
 
@@ -34,10 +38,6 @@ public class BorrowBookWindow extends JFrame implements ActionListener {
         setSize(400, 200);
         setLocationRelativeTo(mw);
         setLayout(new BorderLayout());
-
-        Library library = mw.getLibrary();
-        bookCombo = new JComboBox<>(library.getBooks().stream().filter(b -> !b.isOnLoan()).toArray(Book[]::new));
-        patronCombo = new JComboBox<>(library.getPatrons().toArray(new Patron[0]));
 
         JPanel formPanel = new JPanel(new GridLayout(4, 2));
         formPanel.add(new JLabel("Book: "));
@@ -70,7 +70,7 @@ public class BorrowBookWindow extends JFrame implements ActionListener {
                 borrow.execute(mw.getLibrary(), LocalDate.now());
                 mw.displayBooks();
                 this.setVisible(false);
-            } catch (Exception ex) {
+            } catch (LibraryException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else if (e.getSource() == cancelBtn) {
