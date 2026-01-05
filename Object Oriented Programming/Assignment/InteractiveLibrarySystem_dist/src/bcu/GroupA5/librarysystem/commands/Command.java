@@ -2,10 +2,17 @@ package bcu.GroupA5.librarysystem.commands;
 
 import bcu.GroupA5.librarysystem.main.LibraryException;
 import bcu.GroupA5.librarysystem.model.Library;
-
 import java.time.LocalDate;
 
 public interface Command {
+
+    /**
+     * Marker interface for command objects that encapsulate an operation
+     * on the `Library` model. Using the Command pattern simplifies GUI
+     * integration and testing: GUI windows instantiate and invoke command
+     * objects while command classes contain the domain and persistence
+     * logic.
+     */
 
     public static final String HELP_MESSAGE = "Commands:\n"
             + "\tlistbooks                       print all books*\n"

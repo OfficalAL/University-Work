@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Library System</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Example: Use doc resources -->
+    <link rel="stylesheet" href="../doc/stylesheet.css">
+</head>
+<body>
+    <h1>Interactive Library System</h1>
+    <!-- Example image from doc resources -->
+    <img src="../doc/script-dir/images/ui-icons_2e83ff_256x240.png" alt="Library Icon" style="height:32px;vertical-align:middle;">
+    <nav>
+        <button onclick="showSection('books')">Books</button>
+        <button onclick="showSection('patrons')">Patrons</button>
+        <button onclick="showSection('loans')">Loans</button>
+    </nav>
+    <section id="books-section" class="main-section">
+        <h2>Books</h2>
+        <div id="books-list"></div>
+        <button onclick="openAddBookModal()">Add Book</button>
+    </section>
+    <section id="patrons-section" class="main-section" style="display:none;">
+        <h2>Patrons</h2>
+        <div id="patrons-list"></div>
+        <button onclick="openAddPatronModal()">Add Patron</button>
+    </section>
+    <section id="loans-section" class="main-section" style="display:none;">
+        <h2>Loans</h2>
+        <div id="loans-list"></div>
+    </section>
+    <!-- Modals for Add/Edit actions -->
+    <div id="modal" class="modal" style="display:none;"></div>
+    <script src="app.js"></script>
+</body>
+</html>

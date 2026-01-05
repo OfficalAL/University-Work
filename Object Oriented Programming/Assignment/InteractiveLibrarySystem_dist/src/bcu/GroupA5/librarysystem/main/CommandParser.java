@@ -1,23 +1,28 @@
 package bcu.GroupA5.librarysystem.main;
 
-import bcu.GroupA5.librarysystem.commands.LoadGUI;
-import bcu.GroupA5.librarysystem.commands.ListBooks;
 import bcu.GroupA5.librarysystem.commands.AddBook;
 import bcu.GroupA5.librarysystem.commands.Command;
 import bcu.GroupA5.librarysystem.commands.Help;
+import bcu.GroupA5.librarysystem.commands.ListBooks;
+import bcu.GroupA5.librarysystem.commands.LoadGUI;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
 
 public class CommandParser {
+    /**
+     * CommandParser interprets textual commands from the CLI and converts
+     * them into `Command` objects. Kept intentionally simple to match the
+     * coursework specification: parsing is manual and synchronous so that
+     * the focus remains on demonstrating command responsibilities and
+     * persistence behaviour rather than building a complex parsing layer.
+     */
     
     public static Command parse(String line) throws IOException, LibraryException {
         try {
             String[] parts = line.split(" ", 3);
             String cmd = parts[0];
 
-            // TODO: Link your implemented features to commands here 
             if (cmd.equals("addbook")) {
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
                 System.out.print("Title: ");
@@ -52,12 +57,15 @@ public class CommandParser {
                 int patronID = Integer.parseInt(parts[1]);
                 int bookID = Integer.parseInt(parts[2]);
 
-                if (cmd.equals("borrow")) {
-                    
-                } else if (cmd.equals("renew")) {
-                    
-                } else if (cmd.equals("return")) {
-                    
+                switch (cmd) {
+                    case "borrow":
+                        break;
+                    case "renew":
+                        break;
+                    case "return":
+                        break;
+                    default:
+                        break;
                 }
             }
         } catch (NumberFormatException ex) {

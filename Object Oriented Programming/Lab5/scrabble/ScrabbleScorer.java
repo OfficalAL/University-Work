@@ -46,4 +46,14 @@ public class ScrabbleScorer {
         }
         return highestWord;
     }
+
+    public static void main(String[] args) {
+        ScrabbleScorer scorer = new ScrabbleScorer();
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Enter a word to score: ");
+            String word = scanner.nextLine();
+            int score = scorer.scoreForWord(word);
+            System.out.println("Score for '" + word + "': " + score);
+        }
+    }
 }

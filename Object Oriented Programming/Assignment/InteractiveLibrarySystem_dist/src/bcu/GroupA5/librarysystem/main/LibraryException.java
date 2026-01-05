@@ -6,6 +6,11 @@ package bcu.GroupA5.librarysystem.main;
  * 
  */
 public class LibraryException extends Exception {
+    /**
+     * Simple domain exception used to report business-rule violations and
+     * data-loading errors. Using a custom exception type allows callers to
+     * distinguish domain errors from IO/runtime exceptions.
+     */
 
     public LibraryException(String message) {
         super(message);
