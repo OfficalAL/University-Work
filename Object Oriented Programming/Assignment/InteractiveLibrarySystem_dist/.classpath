@@ -2,5 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="C:/Users/Offic/OneDrive - Birmingham City University/2nd Year/Object Oriented Programming/Assignment/InteractiveLibrarySystem_dist/junit-4.13.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

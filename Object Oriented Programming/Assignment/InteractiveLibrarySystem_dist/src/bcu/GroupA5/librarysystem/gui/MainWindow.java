@@ -155,8 +155,8 @@ public class MainWindow extends JFrame implements ActionListener {
                     displayBooks();
                 } catch (LibraryException ex) {
                     JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(this, "Invalid book ID: please enter a number.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         } else if (ae.getSource() == booksIssue) {
