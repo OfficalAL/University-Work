@@ -7,6 +7,10 @@ import bcu.GroupA5.librarysystem.model.Library;
 import java.io.IOException;
 import java.time.LocalDate;
 
+/* Creates a new DeleteBook command.
+ * Input the ID of the book to be deleted.
+ */
+
 public class DeleteBook implements Command {
     private final int bookId;
     public DeleteBook(int bookId) {

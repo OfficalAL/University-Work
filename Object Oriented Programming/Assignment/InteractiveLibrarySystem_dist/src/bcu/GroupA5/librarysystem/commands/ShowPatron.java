@@ -6,7 +6,7 @@ import bcu.GroupA5.librarysystem.model.Patron;
 import java.time.LocalDate;
 
 /**
- * Command to show details of a patron by ID (created 18 Jan 2026)
+ * Command to show details of a patron by ID
  */
 public class ShowPatron implements Command {
     private final int patronId;
@@ -24,6 +24,7 @@ public class ShowPatron implements Command {
         System.out.println("Patron Details:");
         System.out.println("ID: " + patron.getId());
         System.out.println("Name: " + patron.getName());
+        System.out.println("Phone Number: " + patron.getPhone());
         System.out.println("Email: " + patron.getEmail());
         // Add more fields if needed
     }

@@ -7,7 +7,7 @@ import bcu.GroupA5.librarysystem.model.Book;
 import java.time.LocalDate;
 
 /**
- * Command to show details of a book by ID (created 18 Jan 2026)
+ * Command to show details of a book by ID
  */
 public class ShowBook implements Command {
     private final int bookId;

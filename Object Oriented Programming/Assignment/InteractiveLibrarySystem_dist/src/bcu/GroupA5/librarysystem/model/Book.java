@@ -15,20 +15,16 @@ public class Book {
     // Design note: Book contains only fields directly related to the
     // physical item; loan metadata is stored in a `Loan` object. This
     // avoids mixing historical loan data with the current book record.
-    private int id;
+	private int id;
     private String title;
     private String author;
     private String publicationYear;
-    private String publisher;
-    private Loan loan;
-    private boolean deleted = false;
-    public boolean isDeleted() {
-        return deleted;
-    }
+    private String publisher; // Added for 50% feature
+    
+    // Soft Delete Flag
+    private boolean isDeleted = false; 
 
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
-    }
+    private Loan loan;
 
     public Book(int id, String title, String author, String publicationYear, String publisher) {
         this.id = id;
@@ -37,63 +33,38 @@ public class Book {
         this.publicationYear = publicationYear;
         this.publisher = publisher;
     }
-
-    // Backward compatibility constructor
+    
+    // Compatibility constructor for older code
     public Book(int id, String title, String author, String publicationYear) {
         this(id, title, author, publicationYear, "");
     }
-    public String getPublisher() {
-        return publisher;
-    }
 
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
+    public int getId() { return id; } 
+    public void setId(int id) { this.id = id; }
 
-    public int getId() {
-        return id;
-    } 
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
     
-    public String getAuthor() {
-        return author;
-    }
+    public String getAuthor() { return author; }
+    public void setAuthor(String author) { this.author = author; }
+
+    public String getPublicationYear() { return publicationYear; }
+    public void setPublicationYear(String publicationYear) { this.publicationYear = publicationYear; }
     
-    public void setAuthor(String author) {
-        this.author = author;
-    }
+    public String getPublisher() { return publisher; }
+    public void setPublisher(String publisher) { this.publisher = publisher; }
 
-    public String getPublicationYear() {
-        return publicationYear;
-    }
+    // 70% Feature: Getters/Setters for Soft Delete
+    public boolean isDeleted() { return isDeleted; }
+    public void setDeleted(boolean isDeleted) { this.isDeleted = isDeleted; }
 
-    public void setPublicationYear(String publicationYear) {
-        this.publicationYear = publicationYear;
-    }
-	
     public String getDetailsShort() {
         return "Book #" + id + " - " + title;
     }
 
-        public String getDetailsLong() {
-        if (loan != null) {
-            return "Book #" + id + " - " + title + "\nAuthor: " + author + "\nPublication Year: " + publicationYear
-                + "\nPublisher: " + publisher + "\nStatus: On loan to Patron #" + loan.getPatron().getId()
-                + " until " + loan.getDueDate();
-        }
-        return "Book #" + id + " - " + title + "\nAuthor: " + author + "\nPublication Year: " + publicationYear
-                + "\nPublisher: " + publisher + "\nStatus: Available";
+    public String getDetailsLong() {
+        return "Book #" + id + "\nTitle: " + title + "\nAuthor: " + author + 
+               "\nPub. Year: " + publicationYear + "\nPublisher: " + publisher;
     }
     
     public boolean isOnLoan() {
@@ -101,39 +72,13 @@ public class Book {
     }
     
     public String getStatus() {
-        if (loan != null) {
-            return "On loan to Patron #" + loan.getPatron().getId() + " until " + loan.getDueDate();
-        }
-        return null;
+        return isOnLoan() ? "On Loan" : "Available";
     }
 
-    public LocalDate getDueDate() {
-            if (loan != null) {
-                return loan.getDueDate();
-            }
-        return null;
-    }
-    
-    public void setDueDate(LocalDate dueDate) throws LibraryException {
-        if (loan == null) {
-            throw new LibraryException("This book is not currently on loan.");
-        }
-        loan.setDueDate(dueDate);
-    }
-
-    public Loan getLoan() {
-        return loan;
-    }
-
-    public void setLoan(Loan loan) {
-        this.loan = loan;
-    }
+    public Loan getLoan() { return loan; }
+    public void setLoan(Loan loan) { this.loan = loan; }
 
     public void returnToLibrary() {
         loan = null;
-    }
-    @Override
-    public String toString() {
-        return title + " by " + author + " (ID: " + id + ")";
     }
 }

@@ -17,7 +17,7 @@ public class BookDataManager implements DataManager {
      * isolates IO concerns from the `Library` model.
      */
     
-    private final String RESOURCE = "./resources/data/books.txt";
+private final String RESOURCE = "./resources/data/books.txt";
     
     @Override
     public void loadData(Library library) throws IOException, LibraryException {
@@ -32,7 +32,15 @@ public class BookDataManager implements DataManager {
                     String author = properties[2];
                     String publicationYear = properties[3];
                     String publisher = properties.length > 4 ? properties[4] : "";
+                    
                     Book book = new Book(id, title, author, publicationYear, publisher);
+                    
+                    // [FIX] Load the 'isDeleted' flag if it exists
+                    if (properties.length > 5) {
+                        boolean isDeleted = Boolean.parseBoolean(properties[5]);
+                        book.setDeleted(isDeleted);
+                    }
+                    
                     library.addBook(book);
                 } catch (NumberFormatException ex) {
                     throw new LibraryException("Unable to parse book id " + properties[0] + " on line " + line_idx
@@ -52,6 +60,10 @@ public class BookDataManager implements DataManager {
                 out.print(book.getAuthor() + SEPARATOR);
                 out.print(book.getPublicationYear() + SEPARATOR);
                 out.print(book.getPublisher() + SEPARATOR);
+                
+                // [FIX] This line was missing! Write the deleted status.
+                out.print(book.isDeleted() + SEPARATOR); 
+                
                 out.println();
             }
         }

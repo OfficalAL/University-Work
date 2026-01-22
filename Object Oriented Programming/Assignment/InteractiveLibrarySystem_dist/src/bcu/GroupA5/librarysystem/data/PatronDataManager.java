@@ -31,7 +31,15 @@ public class PatronDataManager implements DataManager {
                     String name = properties[1];
                     String phone = properties[2];
                     String email = properties.length > 3 ? properties[3] : "";
+                    
                     Patron patron = new Patron(id, name, phone, email);
+                    
+                    // [FIX] Load the 'isDeleted' flag
+                    if (properties.length > 4) {
+                        boolean isDeleted = Boolean.parseBoolean(properties[4]);
+                        patron.setDeleted(isDeleted);
+                    }
+                    
                     library.addPatron(patron);
                 } catch (NumberFormatException ex) {
                     throw new LibraryException("Unable to parse patron id " + properties[0] + " on line " + line_idx
@@ -50,6 +58,10 @@ public class PatronDataManager implements DataManager {
                 out.print(patron.getName() + SEPARATOR);
                 out.print(patron.getPhone() + SEPARATOR);
                 out.print(patron.getEmail() + SEPARATOR);
+                
+                // [FIX] This line was missing!
+                out.print(patron.isDeleted() + SEPARATOR);
+                
                 out.println();
             }
         }

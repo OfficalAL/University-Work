@@ -1,6 +1,12 @@
 package bcu.GroupA5.librarysystem.commands;
 
 import bcu.GroupA5.librarysystem.data.LibraryData;
+
+/* Command to "soft delete" a patron from the library system.
+ * This command marks a Patron as deleted. It ensures that no patron
+ * can be deleted if they still have active loans, preserving library assets.
+ */
+
 import bcu.GroupA5.librarysystem.main.LibraryException;
 import bcu.GroupA5.librarysystem.model.Library;
 import bcu.GroupA5.librarysystem.model.Patron;

@@ -7,16 +7,21 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class ListPatrons implements Command {
-    /**
-     * Command to list patrons. This command is read-only and does not
-     * modify state; it formats and prints the patrons list for CLI use.
-     */
+
     @Override
     public void execute(Library library, LocalDate currentDate) throws LibraryException {
         List<Patron> patrons = library.getPatrons();
+        int count = 0;
         for (Patron patron : patrons) {
-            System.out.println("ID: " + patron.getId() + ", Name: " + patron.getName() + ", Phone: " + patron.getPhone());
+            if (!patron.isDeleted()) {
+                // Fix: Added Email to the output string
+                System.out.println("ID: " + patron.getId() + 
+                                   ", Name: " + patron.getName() + 
+                                   ", Phone: " + patron.getPhone() + 
+                                   ", Email: " + patron.getEmail());
+                count++;
+            }
         }
-        System.out.println(patrons.size() + " patron(s)");
+        System.out.println(count + " patron(s)");
     }
 }

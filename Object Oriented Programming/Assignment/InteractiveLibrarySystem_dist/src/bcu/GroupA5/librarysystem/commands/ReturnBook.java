@@ -9,6 +9,11 @@ import java.time.LocalDate;
 public class ReturnBook implements Command {
     private final int patronId;
     private final int bookId;
+    
+    /* Command to issue a book to a patron.
+     * Encapsulates the logic for creating a loan, enforcing business rules
+     * (such as the maximum book limit), and persisting the change.
+     */
 
     public ReturnBook(int patronId, int bookId) {
         this.patronId = patronId;
